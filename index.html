@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -297,22 +296,22 @@
             letter-spacing: 0.025em;
         }
 
-        .badge-dev {
+        .badge-yellow {
             background: rgba(245, 158, 11, 0.2);
             color: #fbbf24;
             border: 1px solid rgba(245, 158, 11, 0.3);
         }
 
-        .badge-npr {
-            background: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .badge-spr {
+        .badge-green {
             background: rgba(16, 185, 129, 0.2);
             color: #34d399;
             border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-red {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
         .badge-default {
@@ -396,7 +395,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>User Directory Dashboard</h1>
+            <h1>🚀 User Directory Dashboard Pro</h1>
             <p class="subtitle">Advanced filtering, sorting, and search capabilities for your user data</p>
         </header>
 
@@ -643,9 +642,19 @@
                     if (headerKey.toLowerCase().includes('domain')) {
                         let badgeClass = 'badge-default';
                         const lowerVal = value.toLowerCase();
-                        if (lowerVal.includes('dev')) badgeClass = 'badge-dev';
-                        else if (lowerVal.includes('npr')) badgeClass = 'badge-npr';
-                        else if (lowerVal.includes('spr')) badgeClass = 'badge-spr';
+                        
+                        // Red badges
+                        if (lowerVal.includes('sipr') || lowerVal.includes('oa-low')) {
+                            badgeClass = 'badge-red';
+                        }
+                        // Yellow badges
+                        else if (lowerVal.includes('jwics') || lowerVal.includes('oa-high')) {
+                            badgeClass = 'badge-yellow';
+                        }
+                        // Green badges
+                        else if (lowerVal.includes('nipr')) {
+                            badgeClass = 'badge-green';
+                        }
                         
                         content = `<span class="domain-badge ${badgeClass}">${value}</span>`;
                     } else {
